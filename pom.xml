@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>Kotak_Somu</artifactId>
+    <groupId>Kotak</groupId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <portofino.version>4.2.8</portofino.version>
+        <portofino.application.directory>${serverInfo:realPath}/WEB-INF</portofino.application.directory>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Portofino parent POM that defines the versions of all dependencies (notice scope: import) -->
+            <dependency>
+                <groupId>com.manydesigns</groupId>
+                <artifactId>portofino</artifactId>
+                <version>${portofino.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <!--
+        ///////////////////////////////////////////////////////////////////////
+        // This file by default includes all available modules. You can      //
+        // disable those that you won't use in your application. Core        //
+        // modules that you shouldn't touch unless you know very well what   //
+        // you're doing are at the bottom of this file.                      //
+        ///////////////////////////////////////////////////////////////////////
+        -->
+
+        <!--
+        ///////////////////////////////////////////////////////////////////////
+        // Database implementations. Choose the ones that apply.             //
+        ///////////////////////////////////////////////////////////////////////
+        -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-derby</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-db2</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-googlecloudsql</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-h2</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-mssql</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-mysql</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-oracle</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-postgresql</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--
+        ///////////////////////////////////////////////////////////////////////
+        // Page types. Remove a module to disable its features.              //
+        ///////////////////////////////////////////////////////////////////////
+        -->
+
+        <!-- CRUD and many-to-many pages. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-crud</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Chart pages. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-chart</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Calendar pages. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-calendar</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+         <!-- Map pages. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-map</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+         <!-- Gallery pages. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-gallery</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--
+        ///////////////////////////////////////////////////////////////////////
+        // Optional services. Remove a module to disable its features.       //
+        ///////////////////////////////////////////////////////////////////////
+        -->
+
+        <!-- Reliable mail sender. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-mail</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- javax.mail. Some application servers natively provide it. -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Quartz integration. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-quartz</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- OpenID support. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-openid</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Support for the Atmosphere framework (push notifications). -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-atmosphere</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Exports to PDF and XLS. -->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--
+        ///////////////////////////////////////////////////////////////////////
+        // Base Portofino services. Some of them can be disabled.            //
+        ///////////////////////////////////////////////////////////////////////
+        -->
+
+        <!-- Support for page actions. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-pageactions</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Support for database connectivity. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-database</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Administration (CMS, database, wizard). Remove to disable this feature. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-admin</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Stripes framework integration. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-stripes</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- REST support through Jersey. -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-jersey</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- REST support through RestEasy. -->
+        <!--
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-resteasy</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        -->
+        <!-- If using RestEasy on a non-JBoss servlet container (e.g. on Tomcat) you need to uncomment this. -->
+        <!--
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-servlet-initializer</artifactId>
+        </dependency>
+        -->
+        <!-- Theme -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-theme</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Google Authentication -->
+        <dependency>
+            <groupId>com.manydesigns</groupId>
+            <artifactId>portofino-google</artifactId>
+            <version>${portofino.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+                </configuration>
+            </plugin>
+            <!--
+            To run the application in an embedded Tomcat 7:
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.0</version>
+            </plugin>
+            -->
+            
+            <!--
+            To run the application in an embedded JBoss AS 7:
+              export MAVEN_OPTS="-Xmx1024M -XX:MaxPermSize=512m"
+              mvn jboss-as:run
+            then browse to http://localhost:8080/${build.finalName}
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.4.Final</version>
+            </plugin>
+            -->
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <profiles>
+        <profile>
+            <!-- Used for development, see web.xml for an explanation. -->
+            <id>portofino-development</id>
+            <properties>
+                <portofino.application.directory>${basedir}/src/main/webapp/WEB-INF</portofino.application.directory>
+            </properties>
+        </profile>
+        <profile>
+            <!-- Build Docker images and launch the application. -->
+            <id>docker</id>
+            <properties>
+                <portofino.application.directory>/application</portofino.application.directory>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>0.31.0</version>
+                        <configuration>
+                            <images>
+                                <image>
+                                    <alias>${project.artifactId}</alias>
+                                    <name>${project.artifactId}:${project.version}</name>
+                                    <build>
+                                        <contextDir>${project.basedir}/src/main/docker/application</contextDir>
+                                        <assembly>
+                                            <descriptor>${project.basedir}/src/main/docker/application/assembly.xml</descriptor>
+                                        </assembly>
+                                    </build>
+                                    <run>
+                                        <skip>true</skip>
+                                    </run>
+                                </image>
+                                <image>
+                                    <alias>${project.artifactId}-debug</alias>
+                                    <name>${project.artifactId}-debug:${project.version}</name>
+                                    <build>
+                                        <contextDir>${project.basedir}/src/main/docker/application/debug</contextDir>
+                                    </build>
+                                    <run>
+                                        <ports>
+                                            <!-- Tomcat HTTP port -->
+                                            <port>8080:8080</port>
+                                            <!-- JPDA port for remote debugging -->
+                                            <port>8000:8000</port>
+                                        </ports>
+                                        <links>
+                                            <!-- Choose one or more of these. You're free to remove unused images. -->
+                                            <link>${project.artifactId}-database-postgresql:postgresql</link>
+                                            <link>${project.artifactId}-database-mysql:mysql</link>
+                                        </links>
+                                        <volumes>
+                                            <bind>
+                                                <volume>${project.basedir}/src/main/webapp/WEB-INF:/application</volume>
+                                            </bind>
+                                        </volumes>
+                                    </run>
+                                </image>
+                                <image>
+                                    <alias>${project.artifactId}-database-postgresql</alias>
+                                    <name>${project.artifactId}-database-postgresql:${project.version}</name>
+                                    <build>
+                                        <contextDir>${project.basedir}/src/main/docker/database/postgresql</contextDir>
+                                    </build>
+                                    <run>
+                                        <ports>
+                                            <!-- Here you can expose the database to outside tools (e.g., pgAdmin) -->
+                                            <!-- <port>15432:5432</port> -->
+                                        </ports>
+                                        <wait>
+                                            <log>database system is ready to accept connections</log>
+                                            <time>20000</time>
+                                        </wait>
+                                    </run>
+                                </image>
+                                <image>
+                                    <alias>${project.artifactId}-database-mysql</alias>
+                                    <name>${project.artifactId}-database-mysql:${project.version}</name>
+                                    <build>
+                                        <contextDir>${project.basedir}/src/main/docker/database/mysql</contextDir>
+                                    </build>
+                                    <run>
+                                        <env>
+                                            <MYSQL_ROOT_PASSWORD>root</MYSQL_ROOT_PASSWORD>
+                                        </env>
+                                        <ports>
+                                            <!-- Here you can expose the database to outside tools (e.g., MySQL workbench) -->
+                                            <!-- <port>13306:3306</port> -->
+                                        </ports>
+                                        <wait>
+                                            <log>mysqld: ready for connections</log>
+                                            <time>20000</time>
+                                        </wait>
+                                    </run>
+                                </image>
+                            </images>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>docker:build</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
